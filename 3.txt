@@ -1,0 +1,71 @@
+소팅 알고리즘
+
+shell sort
+N^2의 벽을 처음으로 넘음
+용량 작아 임베디드에서 자주 사용됨
+
+merge sort
+오브젝트를 위한 소트 알고리즘으로 사용됨
+펄,파이썬에서 스테이블 소트 였다
+
+quick sort
+여러 언어에서 시스템 소트로서 사용되고 있음.
+
+
+고유한 데이터를 key라고 함
+
+import java.io.File;
+
+public class Files {
+
+	public static void main(String[] args) {
+		File directory = new File(args[0]);
+		File[] files = directory.listFiles();
+		Insertion.sort(files);
+		for(int i = 0; i < files.length; i++) {
+			System.out.println(files[i]);
+		}
+	}
+}
+
+Callback
+어떤 타입의 테이터라도 그 타입의 자연적인 순서대로 정렬하고 싶다
+응용프로그램은 오브젝트의 어레이를 소팅함수에다가 전달한다.
+소팅함수는 오브젝트의 내용을 알아채지 못한다.(어떤 데이터가 키 인지 알지 못한다.)
+이러한 내용은 해당 클래스들이 더 잘 알기 때문에 해당 클래스에 비교함수를 만들어 놓고 그것을 소팅함수가 다시 부르도록 하는것
+
+c : 펑션 포인터
+c++ : 펑터 (클래스를 정의하지만, 그것이 마치 함수처럼 상용된다.
+자바 : 인터페이스
+
+장점 : 모든 데이터 타입에 대해서 코드를 재사용할 수 있다.
+단점 : 루프 안의 오버해드가 커진다
+-> 알고리즘 자체에 집중할 수 있다.
+
+shell sort
+insertion sort를 개선했다.
+insertion sort : 한번에 한 칸씩밖에 이동하기 때문에 느린거다.
+h-sorting.
+SORTEXAMPLES
+7-sort
+3-sort  
+
+insertion sort -> h sort -> shell sort
+
+shellsort
+간단한 아이디어로 막강한 성능을 얻었다.
+-사이즈가 크지 않을 때
+- 코드가 간단, 임베디드에 적당함
+- 소팅 전용 하드웨어를 만들 때도 좋다.
+
+N이 커지면 서능 다운
+매직넘어에 대한 의문
+평균적인 성능
+
+mergesort
+폰노이만
+
+메모리량 2N + O(log N)
+
+바텀업
+센티낼(보초병) 기법
