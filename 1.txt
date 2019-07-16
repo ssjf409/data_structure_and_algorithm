@@ -1,0 +1,58 @@
+
+Define the problem.
+Find an algorithm to solve it.
+Fast enough?
+If not, figure out why/
+Find a way to address the problem.
+Iterate until satisifed.
+
+//==========================
+유니온 파인드로 찾을 수 있는 문제
+- network connectivity
+- computer in a network
+- web pageds on the Interne.
+- transistors in a computer chip
+- variable name aliases.
+- pixels in digital photo.
+- metallic sites in a composite system.
+
+모델링하는 과정
+정수를 사용하면 다른 정보를 배제 할 수 있다.
+이름이 다른 경우 심볼 테이블을 추가 할 수 있다.
+
+경로를 찾지는 못하고, 연결 되어있다는 것만 알 수 있다.
+
+오브젝트, 선, 집합
+파인드 쿼리 : 두 집합이 같은 집합에 있는지?
+유니온 커맨드 : 합친다.
+
+//=======
+i : 
+id[i] : 집합의 번호
+
+quick find [eager approch] : 유니온 할 때 부지런히 해서, find할 때 금방 찾을 수 있다.
+유니온 커맨드가 굉장히 자주 발생한다.
+i	0 1 2 3 4 5 6 7 8 9
+id[i]	0 1 9 9 9 6 6 7 8 9
+
+문제점 : 한번 합칠 때 마다 모든 오브젝트 다 검색해서 일일이 바꾼다.
+시간 엄청 오래 걸림
+
+//======
+quick union[lazy approch] :
+i : 각 오브젝트
+id[i] : 해당 오브젝트의 parent의 번호 -> 루트가 나올 때 까지 찾아가야함
+i	0 1 2 3 4 5 6 7 8 9
+id[i]	0 1 9 4 9 6 6 7 8 9
+파인드 쿼리 : 아이디랑 루트가 같을 때 까지 찾는다.
+유니온 : 합칠 때 하나의 i[d]만 parent를 바꾼다.
+
+문제점 : 트리의 깊이가 매우 깊어질 수 이음. 성능이 안 좋아 질 수 있음
+
+
+비교 :
+quick find : 유니온 비싸지만, 트리가 평평하다.
+Quick union : 트리가 높아질 수 있다. 파인드 찾기 힘들다
+
+Quick-find	N	1
+Quick-union	N*	N <- worst case

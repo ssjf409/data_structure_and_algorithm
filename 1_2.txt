@@ -1,0 +1,64 @@
+union-find algorithms
+
+단점 개선
+
+1.Weighting  : 트리가 커지는 것을 방지
+
+Weighted quick-union
+각 집합에 들어있는 오브젝트들의 갯수를 조정
+작은 트리를 큰 트리에 링킹 하는 것으로 해결
+
+원소 갯수를 의미하는 sz[]를 추가
+
+if(sz[i] < sz[j]) { id[i] = j; sz[j] += sz[i]; }
+else { id[j] = i; sz[i] += sz[j]; }
+
+
+
+Quick-find	N	1
+Quick-union	N*	N
+Weighted QU	lgN*	lgN
+
+조금 더 개선
+Path compression (경로 압축)
+
+찾아가는 경로 상의 루트들의 부모값을 root로 바꿔준다.
+
+public int root(int i)
+{
+	while (i != id[i])
+	{
+		id[i] = id[id[i]]; //방문 된 중간 노드에 중간 노드에서 그 노드를 id의 id로 설정
+		i = id[i];
+	}
+	return i;
+}
+
+M 유니온 , N 오브젝트
+O(N + M lg*N)
+
+-> 리니어한 수준인가?
+1		0
+2		1
+4		2
+16		3
+65536		4
+265536		5
+
+이론적으로는 퀵 유니온 문제를
+리니어한 타임 안에 풀 수 없지만, 실질적으로 알고리즘을
+통해서 실제적으로 리니어한 타임 안에 해결한 것이다.
+
+
+Algorithm	Worst-case time
+Quick-find	MN
+Quick-union	MN
+Weighted QU	N + M logN
+Path compression	N + M logN
+Weighted + path	(M + N) lg* N
+
+응용분야
+-네트워크 커넥션
+-물리(투과 등등
+-이미지프로세싱
+- 등등

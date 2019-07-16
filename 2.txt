@@ -1,0 +1,101 @@
+2.Stack & Queues
+Fundatmental data types
+
+stack : most recently added
+LIFO : last in first out
+
+queue : least recently added
+FIFO : first in first out
+
+
+Interface : 설계(데이터 타입, 기본 operation 선언)
+Client : 가져다 쓰는 프로그램
+Implementation : (실제 코드)
+
+interface & implementation -> 추상화
+
+설계 : modular approach( -> 재사용 가능하게 함)
+성능에 제약이 되면, 최적화함
+
+
+//==========
+Stack
+
+push()
+pop()
+isEmpty()
+s
+
+public static void main(String[] args) {
+	StackOfStrings stack = new StackOfStrings();
+	while(!StdIn.isEmpty()) {
+		String s = StdIn.readString();
+		stack.push(s);
+	}
+	while(!stack.isEmpty()) {
+		String s = stack.pop();
+		StdOut.println(s);	
+	}
+}
+
+//=============
+dynamic resizing 
+스택의 크기를 늘리고 줄이고
+
+늘리기
+
+repeated doubling : 기존 크기의 두배를 잡는 방법
+
+private void resize(int max) {
+	String[] dup = new String[max];
+	for (int i = 0; i < N; i++) {
+		dup[i] = s[i];
+	}
+	s = dup[i];
+}
+
+줄이기
+1/4 만큼 줄었을 때,  반으로 줄이기
+
+public String pop(String item) {
+
+	String item = s[--N];
+	s[N] = null;
+	if(N == s.length/4) {
+		resize(s.length/2);
+	}
+	return item;
+}
+
+어레이가 나은가 링크드 리스트가 나은가?
+
+-array
+대부분 상수시간이 걸린다.
+다만 더블링 오퍼레이션이 가끔씩 필요함
+수행시간 N에 비례
+
+-linked list
+늘리기, 줄이기 필요없음
+상수시간이 걸림
+추가적인 시간과 공간이 들다.
+
+스택에 남아있는 엘리멘트의 수를 리턴할 때? array
+k번쨰 지울때? array
+random element? array
+
+//==============
+queue
+
+publicstatic void main(String[] args) {
+	QueueOfStrings q = new QueueOfStrings();
+	q.enqueue("Vertigo");
+	q.enqueue("Vertigo");
+	q.enqueue("Vertigo");
+	System.out.println(q.dequeue());
+	q.enqueue("Vertigo");
+
+	while(!q.isEmpty()) {
+	
+		System.out.println(q.dequeue());
+	}
+}
